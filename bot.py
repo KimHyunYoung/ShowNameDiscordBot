@@ -18,6 +18,11 @@ async def 음성유저(ctx):
     output = []
 
     for vc in ctx.guild.voice_channels:
+        allowed_names = ["캔닛"]
+
+        if ctx.author.name not in allowed_names:
+            return
+
         if vc.members: 
             member_names = []
             for members in vc.members:

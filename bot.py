@@ -1,7 +1,8 @@
 import discord
 from discord.ext import commands
 import os
-import re
+import emoji
+
 
 intents = discord.Intents.default()
 intents.members = True  # 멤버 목록 접근 허용
@@ -9,17 +10,9 @@ intents.message_content = True   # 메시지 내용 읽기 허용
 intents.voice_states = True   # 음성 상태 접근 허용
 
 
+
 def remove_emojis(text):
-    emoji_pattern = re.compile(
-        "["
-        "\U0001F600-\U0001F64F"  # 😀 ~ 😏 (이모티콘)
-        "\U0001F300-\U0001F5FF"  # 🌍 ~ 🗿 (기호 & 그림)
-        "\U0001F680-\U0001F6FF"  # 🚀 ~ 🚻 (교통 & 지도)
-        "\U0001F1E0-\U0001F1FF"  # 🇰🇷 ~ 🇺🇸 (국기)
-        "]+",
-        flags=re.UNICODE
-    )
-    return emoji_pattern.sub(r'', text)
+    return emoji.replace_emoji(text, replace='')
 
 
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -29,7 +22,7 @@ async def on_ready():
     print(f"봇 로그인 완료: {bot.user}")
 
 @bot.command()
-async def 음성유저(ctx):
+async def 참여자(ctx):
     output = []
 
     for vc in ctx.guild.voice_channels:
@@ -48,7 +41,7 @@ async def 음성유저(ctx):
                     splittedfirst = first.split(" ")
                     if len(splittedfirst) >= 3:
                         member_names.append(splittedfirst[-1])
-            output.append(f">{vc.name} 채널:\n" + "\n".join(member_names))
+            output.append(f"{vc.name}\n" + "\n".join(member_names))
 
     await ctx.send("\n\n".join(output))
 

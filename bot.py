@@ -31,8 +31,6 @@ async def 음성유저(ctx):
                 else:
                     member_names.append("#" + nickname)
             output.append(f"📢 {vc.name} 채널:\n" + "\n".join(member_names))
-        else:
-            output.append(f"📢 {vc.name} 채널: (접속자 없음)")
 
     await ctx.send("\n\n".join(output))
 

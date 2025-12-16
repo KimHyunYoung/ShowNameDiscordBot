@@ -27,7 +27,7 @@ async def 음성유저(ctx):
                     first = parts[0]
                     splittedfirst = first.split(" ")
                     if len(splittedfirst) >= 3:
-                        member_names.append(splittedfirst[2])
+                        member_names.append(splittedfirst[-1])
                 else:
                     member_names.append("#" + nickname)
             output.append(f"📢 {vc.name} 채널:\n" + "\n".join(member_names))
@@ -35,5 +35,5 @@ async def 음성유저(ctx):
             output.append(f"📢 {vc.name} 채널: (접속자 없음)")
 
     await ctx.send("\n\n".join(output))
-    
+
 bot.run(os.environ['TOKEN'])

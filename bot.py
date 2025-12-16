@@ -19,7 +19,7 @@ async def 음성유저(ctx):
 
     for vc in ctx.guild.voice_channels:
         allowed_names = ["오오카미"]
-
+        output.append(f">사용자: {ctx.author.name}\n")
         if ctx.author.name not in allowed_names:
             return
 

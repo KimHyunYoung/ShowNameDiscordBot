@@ -19,7 +19,7 @@ def remove_emojis(text):
         "]+",
         flags=re.UNICODE
     )
-    return emoji_pattern.sub(r'', 
+    return emoji_pattern.sub(r'', text)
 
 
 bot = commands.Bot(command_prefix="!", intents=intents)

@@ -15,9 +15,21 @@ async def on_ready():
 @bot.command()
 async def 유저목록(ctx):
     members = ctx.guild.members
-    member_names = [member.name for member in members]
-    # 너무 길어질 수 있으니 20명까지만 출력
-    output = "\n".join(member_names[:20])
-    await ctx.send(f"서버 유저 목록 (일부):\n{output}")
+    member_names = []
+
+    for member in members:
+        nickname = member.display_name  # 닉네임 가져오기
+        parts = nickname.split("/")
+        if len(parts) > 1:
+            first = parts[0]
+            splittedfirst = first.split(" ")
+            # 세 번째 단어가 존재하는지 확인
+            if len(splittedfirst) >= 3:
+                member_names.append(splittedfirst[2])
+        else:
+            member_names.append("#" + nickname)
+
+    output = "\n".join(member_names)
+    await ctx.send(f"서버 유저 목록:\n{output}")
 
 bot.run(os.environ['TOKEN'])

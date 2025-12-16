@@ -28,9 +28,7 @@ async def 음성유저(ctx):
                     splittedfirst = first.split(" ")
                     if len(splittedfirst) >= 3:
                         member_names.append(splittedfirst[-1])
-                else:
-                    member_names.append("#" + nickname)
-            output.append(f"{vc.name} 채널:\n" + "\n".join(member_names))
+            output.append(f">{vc.name} 채널:\n" + "\n".join(member_names))
 
     await ctx.send("\n\n".join(output))
 

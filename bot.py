@@ -19,10 +19,10 @@ async def 음성유저(ctx):
 
     for vc in ctx.guild.voice_channels:
         if vc.members: 
+            member_names = []
             for members in vc.members:
                 nickname = members.display_name  # 닉네임 가져오기
                 parts = nickname.split("/")
-                member_names = []
                 if len(parts) > 1:
                     first = parts[0]
                     splittedfirst = first.split(" ")
@@ -35,5 +35,5 @@ async def 음성유저(ctx):
             output.append(f"📢 {vc.name} 채널: (접속자 없음)")
 
     await ctx.send("\n\n".join(output))
-
+    
 bot.run(os.environ['TOKEN'])

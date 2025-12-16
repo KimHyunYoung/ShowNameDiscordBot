@@ -21,6 +21,7 @@ async def 음성유저(ctx):
         allowed_names = ["오오카미"]
         output.append(f">사용자: {ctx.author.name}\n")
         if ctx.author.name not in allowed_names:
+            await ctx.send("\n\n".join(output))
             return
 
         if vc.members: 

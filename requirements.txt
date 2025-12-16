@@ -1,2 +1,2 @@
 discord.py[voice]
-audioop-lts>=0.4.0
+audioop-lts; python_version>='3.13' 

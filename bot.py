@@ -18,10 +18,8 @@ async def 음성유저(ctx):
     output = []
 
     for vc in ctx.guild.voice_channels:
-        allowed_names = ["오오카미"]
-        output.append(f">사용자: {ctx.author.name}\n")
+        allowed_names = ["ookami812"]
         if ctx.author.name not in allowed_names:
-            await ctx.send("\n\n".join(output))
             return
 
         if vc.members: 

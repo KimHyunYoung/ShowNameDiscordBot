@@ -4,6 +4,7 @@ import os
 
 intents = discord.Intents.default()
 intents.members = True  # 멤버 목록 접근 허용
+intents.message_content = True   # 메시지 내용 읽기 허용
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 

@@ -50,7 +50,7 @@ async def 참여자(ctx):
                 if len(parts) > 1:
                     first = parts[0]
                     splittedfirst = first.split(" ")
-                    if len(splittedfirst) >= 3:
+                    if len(splittedfirst) >= 2:
                         member_names.append(splittedfirst[-1])
             output.append(f"{vc.name}\n" + "\n".join(member_names))
 
